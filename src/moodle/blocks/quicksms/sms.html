@@ -1,0 +1,29 @@
+<form name="theform" method="post" action="sms.php" enctype="multipart/form-data">
+<table border="0" cellpadding="5">
+<tr valign="top">
+    <td align="right"><strong><?php print_string('to', 'block_quicksms'); ?>:</strong></td>
+    <td>
+        <a href="javascript:void(0);" onclick="block_quicksms_toggle(true, 1, 0);"><?php print_string('selectall'); ?></a> / <a href="javascript:void(0);" onclick="block_quicksms_toggle(false, 1, 0);"><?php print_string('deselectall'); ?></a>
+        <br />
+        <br />
+        <?php print_table($table); ?>
+    </td>
+</tr>
+<tr valign="top">
+    <td align="right"><b><?php print_string('subject', 'forum'); ?>:</b></td>
+    <td>
+        <textarea name="subject" cols="60" rows="3"><?php p($form->subject); ?></textarea>
+    </td>
+</tr>
+
+<tr>
+    <td align="center" colspan="2">
+    <input type="hidden" name="sesskey" value="<?php echo sesskey(); ?>" />
+    <input type="hidden" name="id" value="<?php echo $course->id; ?>" />
+    <input type="hidden" name="instanceid" value="<?php echo $instanceid; ?>" />
+    <input type="submit" name="cancel" value="<?php print_string('cancel') ?>" />
+    <input type="submit" name="sendsms" value="<?php print_string('sendsms', 'block_quicksms') ?>" />
+    </td>
+</tr>
+</table>
+</form>
