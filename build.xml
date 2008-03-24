@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<project name="moodle_quicksms" basedir="." default="build">
+<project name="moodle_blocks_quicksms" basedir="." default="build">
     <taskdef classname="phing.tasks.ext.d51PearPkg2Task" name="d51pearpkg2" />
     <taskdef classname="phing.tasks.ext.IlibPearDeployerTask" name="peardeploy" />
     <taskdef classname="phing.tasks.ext.FtpDeployTask" name="ftpdeploy" />
@@ -48,7 +48,7 @@
             <channel>${pear.channel}</channel>
             <description>
                 <!--        Don't exceed this width         -->
-                Ilib_Position
+                Moodle sms
             </description>
 
             <lead user="lsolesen" name="Lars Olesen" email="lars@legestue.net" />
@@ -65,7 +65,7 @@
                       recommended_version="1.6.1" />
             </dependencies>
             <notes>
-                * Changed maxPosition() to getMaxPosition()
+                * Initial release
             </notes>
         </d51pearpkg2>
     </target>
