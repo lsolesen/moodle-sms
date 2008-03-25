@@ -44,11 +44,22 @@
     <target name="pear" depends="export">
         <d51pearpkg2 dir="${build.dir}/package/${package-name}-${version}/" baseinstalldir="/">
             <name>${package-name}</name>
-            <summary>Moodle sms</summary>
+            <summary>Block to send sms from moodle</summary>
             <channel>${pear.channel}</channel>
             <description>
                 <!--        Don't exceed this width         -->
-                Moodle sms
+                A block for Moodle which can send sms. Right
+                now it is prepared to use the CMSMS gateway,
+                but can easily be rewritten to other sms
+                gateways. A good way to do it is to implement
+                the registry from konstrukt.
+
+                Can only be used in group mode in version 1.8
+                because the group system is currently changing.
+
+                Install by unzipping into the block directory
+                in the moodle installation. Make sure to also
+                install Ilib_Services_CPSMS.
             </description>
 
             <lead user="lsolesen" name="Lars Olesen" email="lars@legestue.net" />
