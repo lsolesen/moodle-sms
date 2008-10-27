@@ -237,7 +237,7 @@
             // cell1 has the group picture, name and check button
             $cell1 = '';
             if ($group) {
-                $groupobj = groups_get_group($group);
+                $groupobj = groups_get_group($group->id);
                 $cell1   .= print_group_picture($groupobj, $course->id, false, true).'<br />';
             }
             if ($group) {
