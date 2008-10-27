@@ -5,26 +5,19 @@
  *
  * Based upon http://docs.moodle.org/en/Quickmail_block, version 1.8
  *
- * @author Lars Olesen
- * @version
+ * PHP version 4
+ *
+ * Works with Moodle 1.9
+ *
+ * @author Lars Olesen <lars@legestue.net>
+ * @version @@VERSION@@
  * @package quicksms
  */
 
-   function sms_to_user($send_to_phone, $USER, $message)
-   {  /*
-        set_include_path('c:/Users/Lars Olesen/workspace/ilib/Ilib_Services_CPSMS/src/' . PATH_SEPARATOR . get_include_path());
-        // todo put this down in the code, so only one call is made to the service
-        require_once 'Ilib/Services/CPSMS.php';
-        $sms = new Ilib_Services_CPSMS(USERNAME, PASSWORD);
-        $sms->setMessage($message);
-        $sms->addRecipient($send_to_phone);
-        $sms->send($send_to_phone);
-      */
-       return true;
-   }
 
     require_once('../../config.php');
     require_once($CFG->libdir.'/blocklib.php');
+    require_once('smsfunction.php');
 
     $id         = required_param('id', PARAM_INT);  // course ID
     $instanceid = optional_param('instanceid', 0, PARAM_INT);
@@ -187,7 +180,7 @@
         // set the groups variable
         switch ($groupmode) {
             case VISIBLEGROUPS:
-                $groups = groups_get_groups($course->id);
+                $groups = groups_get_all_groups($course->id);
                 break;
 
             case SEPARATEGROUPS:
@@ -199,11 +192,13 @@
         $groups[] = 0;
 
         $notingroup = array();
-        if ($allgroups = groups_get_groups($course->id)) {
+        if ($allgroups = groups_get_all_groups($course->id)) {
             foreach ($courseusers as $user) {
                 $nomembership = true;
+
                 foreach ($allgroups as $group) {
-                    if (groups_is_member($group, $user->id)) {
+
+                    if (groups_is_member($group->id, $user->id)) {
                         $nomembership = false;
                         break;
                     }
@@ -223,7 +218,7 @@
             $start = $t;
             $cells = array();  // table cells (each is a check box next to a user name)
             foreach($courseusers as $user) {
-                if (groups_is_member($group, $user->id) or                    // is a member of the group or
+                if (groups_is_member($group->id, $user->id) or                    // is a member of the group or
                    ($group == 0 and in_array($user->id, $notingroup)) ) {     // this is our fake group and this user is not a member of another group
 
                     if (isset($form->mailto) && in_array($user->id, $form->mailto)) {
@@ -246,7 +241,7 @@
                 $cell1   .= print_group_picture($groupobj, $course->id, false, true).'<br />';
             }
             if ($group) {
-                $cell1 .= groups_get_group_name($group);
+        $cell1 .= groups_get_group_name($group->id);
             } else {
                 $cell1 .= get_string('notingroup', 'block_quicksms');
             }

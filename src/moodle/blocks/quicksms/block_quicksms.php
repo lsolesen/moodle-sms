@@ -8,8 +8,12 @@
  *
  * Based upon http://docs.moodle.org/en/Quickmail_block, version 1.8
  *
- * @author  Lars Olesen
- * @version
+ * PHP version 4
+ *
+ * Works with Moodle 1.9
+ *
+ * @author  Lars Olesen <lars@legestue.net>
+ * @version @@VERSION@@
  * @package quicksms
  */
 
@@ -20,7 +24,7 @@
  *
  * @todo Make a global config so that admins can set the defaults (default for student (yes/no) default for groupmode (select a groupmode or use the courses groupmode)) NOTE: make sure email.php and emaillog.php use the global config settings
  *
- * @author Lars Olesen
+ * @author Lars Olesen <lars@legestue.net>
  * @package quicksms
  */
 class block_quicksms extends block_list {
@@ -122,8 +126,8 @@ class block_quicksms extends block_list {
     }
 
     /**
-     * Get the groupmode of Quickmail.  This function pays
-     * attention to the course group mode force.
+     * Get the groupmode of Quickms.  This function pays attention to the course
+     * group mode force.
      *
      * @return int The group mode of the block
      **/

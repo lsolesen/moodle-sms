@@ -4,8 +4,12 @@
  *
  * Based upon http://docs.moodle.org/en/Quickmail_block, version 1.8
  *
+ * PHP Version 4
+ *
+ * Works with Moodle 1.9
+ *
  * @author  Lars Olesen
- * @version
+ * @version @@VERSION@@
  * @package quicksms
  **/
 

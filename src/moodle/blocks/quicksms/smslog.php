@@ -6,10 +6,14 @@
  *
  * Based upon http://docs.moodle.org/en/Quickmail_block, version 1.8
  *
+ * PHP version 4
+ *
+ * Works with Moodle 1.9
+ *
  * @todo Add a print option?
  *
- * @author Lars Olesen
- * @version
+ * @author Lars Olesen <lars@legestue.net>
+ * @version @@VERSION@@
  * @package quicksms
  **/
 
