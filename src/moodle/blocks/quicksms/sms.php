@@ -121,6 +121,9 @@
             $log->userid     = $USER->id;
             $log->mailto     = implode(',', $mailedto);
             $log->subject    = addslashes($form->subject);
+            $log->message    = '';
+            $log->attachment = '';
+            $log->format     = 'sms';
             $log->timesent   = time();
             if (!insert_record('block_quicksms_log', $log)) {
                 error('sms not logged.');
@@ -241,7 +244,7 @@
                 $cell1   .= print_group_picture($groupobj, $course->id, false, true).'<br />';
             }
             if ($group) {
-        $cell1 .= groups_get_group_name($group->id);
+                $cell1 .= groups_get_group_name($group->id);
             } else {
                 $cell1 .= get_string('notingroup', 'block_quicksms');
             }
